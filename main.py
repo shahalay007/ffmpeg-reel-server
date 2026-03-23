@@ -71,11 +71,8 @@ def generate():
 
     try:
         output_path, video_id = generate_reel(topic, caption, script)
-        domain = os.environ.get("RAILWAY_PUBLIC_DOMAIN", "")
-        if domain:
-            video_url = f"https://{domain}/video/{video_id}"
-        else:
-            video_url = f"/video/{video_id}"
+        domain = os.environ.get("RAILWAY_PUBLIC_DOMAIN", "heartfelt-purpose-production-0c58.up.railway.app")
+        video_url = f"https://{domain}/video/{video_id}"
         return jsonify({"success": True, "video_id": video_id, "video_url": video_url})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
